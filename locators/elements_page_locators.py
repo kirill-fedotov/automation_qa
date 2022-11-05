@@ -24,3 +24,4 @@ class CheckBoxPageLocators:
     #TITLE_ITEM = (By.XPATH, "//span[@class='rct-text']")
     #TITLE_ITEM = (By.XPATH, ".//ancestor::span[@class='rct-title']")
     OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
+

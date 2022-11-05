@@ -63,3 +63,4 @@ class CheckBoxPage(BasePage):
         return str(data).replace(' ', '').lower()
 
 
+
