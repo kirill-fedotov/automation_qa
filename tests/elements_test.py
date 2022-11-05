@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
-from pages.elements_page import TextBoxPage, CheckBoxPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage
 
 
 class TestElements:
@@ -31,6 +31,14 @@ class TestElements:
             print(output_result)
             #time.sleep(5)
 
-
-
+    class TestRadioButton:
+        def test_radio_button(self, driver):
+            radio_button_page = RadioButtonPage(driver, 'https://demoqa.com/radio-button')
+            radio_button_page.open()
+            radio_button_page.click_on_the_radio_button('yes')
+            yes_result = radio_button_page.get_otput_result()
+            radio_button_page.click_on_the_radio_button('impressive')
+            impressive_result = radio_button_page.get_otput_result()
+            assert yes_result == 'Yes', "'Yes' have not be selected"
+            assert impressive_result == 'Impressive', "'Impressive' have not be selected"
 
