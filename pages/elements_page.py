@@ -29,6 +29,7 @@ class TextBoxPage(BasePage):
         permanent_address = self.element_is_present(self.locators.CREATED_PERMANENT_ADDRESS).text.split(':')[1]
         return full_name, email, current_address, permanent_address
 
+
 class CheckBoxPage(BasePage):
     locators = CheckBoxPageLocators()
 
@@ -54,7 +55,6 @@ class CheckBoxPage(BasePage):
             data.append(box.text)
         return str(data).replace(' ', '').replace('.', '').replace('doc', '').lower()
 
-
     def get_output_result(self):
         result_list = self.elements_are_present(self.locators.OUTPUT_RESULT)
         data = []
@@ -62,18 +62,15 @@ class CheckBoxPage(BasePage):
             data.append(item.text)
         return str(data).replace(' ', '').lower()
 
+
 class RadioButtonPage(BasePage):
     locators = RadioButtonPageLocators()
 
     def click_on_the_radio_button(self, choice):
         choices = {'yes': self.locators.YES_RADIO_BUTTON,
-                    'impressive': self.locators.IMPRESSIVE_RADIO_BUTTON
+                   'impressive': self.locators.IMPRESSIVE_RADIO_BUTTON
                    }
         self.element_is_visible(choices[choice]).click()
 
-    def get_otput_result(self):
+    def get_output_result(self):
         return self.element_is_present(self.locators.OUTPUT_RESULT).text
-
-
-
-

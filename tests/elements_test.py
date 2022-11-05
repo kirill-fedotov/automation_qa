@@ -36,9 +36,9 @@ class TestElements:
             radio_button_page = RadioButtonPage(driver, 'https://demoqa.com/radio-button')
             radio_button_page.open()
             radio_button_page.click_on_the_radio_button('yes')
-            yes_result = radio_button_page.get_otput_result()
+            yes_result = radio_button_page.get_output_result()
             radio_button_page.click_on_the_radio_button('impressive')
-            impressive_result = radio_button_page.get_otput_result()
+            impressive_result = radio_button_page.get_output_result()
             assert yes_result == 'Yes', "'Yes' have not be selected"
             assert impressive_result == 'Impressive', "'Impressive' have not be selected"
 
