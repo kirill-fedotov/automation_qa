@@ -45,5 +45,9 @@ class WebTablePageLocators:
     FULL_PEOPLE_LIST = (By.CSS_SELECTOR, "div[class='rt-tr-group']")
     SEARCH_INPUT = (By.CSS_SELECTOR, "input[id='searchBox']")
     DELETE_BUTTON = (By.CSS_SELECTOR, "span[title='Delete']")
+    NO_ROWS_FOUND = (By.CSS_SELECTOR, "div[class='rt-noData']")
+    COUNT_ROW_LIST = (By.CSS_SELECTOR, "select[aria-label='rows per page']")
 
+    # Update
+    UPDATE_BUTTON = (By.CSS_SELECTOR, "span[title='Edit']")
 
