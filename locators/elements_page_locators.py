@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 
 class TextBoxPageLocators:
-
     # form fields
     FULL_NAME = (By.CSS_SELECTOR, "input[id='userName']")
     EMAIL = (By.CSS_SELECTOR, "input[id='userEmail']")
@@ -16,19 +15,21 @@ class TextBoxPageLocators:
     CREATED_CURRENT_ADDRESS = (By.CSS_SELECTOR, "p[id='currentAddress']")
     CREATED_PERMANENT_ADDRESS = (By.CSS_SELECTOR, "p[id='permanentAddress']")
 
-class CheckBoxPageLocators:
 
+class CheckBoxPageLocators:
     EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, "button[title='Expand all']")
     ITEM_LIST = (By.CSS_SELECTOR, "span[class='rct-title']")
     CHECKED_ITEMS = (By.CSS_SELECTOR, "svg[class='rct-icon rct-icon-check']")
-    #TITLE_ITEM = (By.XPATH, "//span[@class='rct-text']")
-    #TITLE_ITEM = (By.XPATH, ".//ancestor::span[@class='rct-title']")
+    # TITLE_ITEM = (By.XPATH, "//span[@class='rct-text']")
+    # TITLE_ITEM = (By.XPATH, ".//ancestor::span[@class='rct-title']")
     OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
+
 
 class RadioButtonPageLocators:
     YES_RADIO_BUTTON = (By.CSS_SELECTOR, "label[class='custom-control-label'][for='yesRadio']")
     IMPRESSIVE_RADIO_BUTTON = (By.CSS_SELECTOR, "label[class='custom-control-label'][for='impressiveRadio']")
     OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
+
 
 class WebTablePageLocators:
     # Add person form
@@ -50,4 +51,15 @@ class WebTablePageLocators:
 
     # Update
     UPDATE_BUTTON = (By.CSS_SELECTOR, "span[title='Edit']")
+
+
+class ButtonsPageLocators:
+    DOUBLE_CLICK_ME_BUTTON = (By.CSS_SELECTOR, "button[id='doubleClickBtn']")
+    RIGHT_CLICK_ME_BUTTON = (By.CSS_SELECTOR, "button[id='rightClickBtn']")
+    CLICK_ME_BUTTON = (By.XPATH, "//div[3]/button")
+
+    # Result
+    SUCCESS_DOUBLE = (By.CSS_SELECTOR, "p[id='doubleClickMessage']")
+    SUCCESS_RIGHT = (By.CSS_SELECTOR, "p[id='rightClickMessage']")
+    SUCCESS_CLICK_ME = (By.CSS_SELECTOR, "p[id='dynamicClickMessage']")
 
