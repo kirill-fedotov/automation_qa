@@ -32,6 +32,12 @@ class BasePage:
     def go_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
+    def scroll_down(self):
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def scroll_to(self, y):
+        self.driver.execute_script(f"window.scrollTo(0, {y})")
+
     def action_right_click(self, element):
         action = ActionChains(self.driver)
         action.context_click(element)

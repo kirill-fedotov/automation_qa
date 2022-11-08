@@ -4,7 +4,7 @@ import time
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage
 
 
 class TestElements:
@@ -19,6 +19,13 @@ class TestElements:
             assert email == created_email, "The email does not match"
             assert current_address == created_cur_addr, "The current address does not match"
             assert permanent_address == created_perm_addr, "The permanent address does not match"
+
+        def test_mo_to(self, driver):
+            text_box_page = TextBoxPage(driver, 'https://demoqa.com/text-box')
+            text_box_page.open()
+            time.sleep(5)
+            text_box_page.move()
+            time.sleep(5)
 
     class TestCheckBox:
         def test_check_box(self, driver):
@@ -94,3 +101,17 @@ class TestElements:
             assert double == 'You have done a double click', 'The double click button was not pressed'
             assert right == 'You have done a right click', 'The right click button was not pressed'
             assert click == 'You have done a dynamic click', 'The dynamic click button was not pressed'
+
+    class TestLinksPage:
+
+        def test_check_link(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            href_link, current_link = links_page.check_new_tab_simple_link()
+            assert href_link == current_link, 'The link is broken or url is incorrect'
+
+        def test_broken_link(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            response_code = links_page.check_broken_link('https://demoqa.com/bad-request')
+            assert response_code == 400, 'The link works or the status code in son 400'
