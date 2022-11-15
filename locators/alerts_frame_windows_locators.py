@@ -7,5 +7,10 @@ class BrowserWindowsPageLocators:
     NEW_WINDOW_BUTTON = (By.CSS_SELECTOR, "button[id='windowButton']")
 
 
-
-
+class AlertsPageLocators:
+    SEE_ALERT_BUTTON = (By.XPATH, "//button[@id='alertButton']")
+    APPEAR_ALERT_AFTER_5_SECONDS_BUTTON = (By.XPATH, "//button[@id='timerAlertButton']")
+    CONFIRM_BOX_ALERT_BUTTON = (By.XPATH, "//button[@id='confirmButton']")
+    CONFIRM_RESULT = (By.XPATH, "//span[@id='confirmResult']")
+    PROMPT_BOX_ALERT_BUTTON = (By.XPATH, "//button[@id='promtButton']")
+    PROMPT_RESULT = (By.XPATH, "//span[@id='promptResult']")
