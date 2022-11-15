@@ -38,6 +38,13 @@ class BasePage:
     def scroll_to(self, y):
         self.driver.execute_script(f"window.scrollTo(0, {y})")
 
+    def zoom(self, zoom_to):
+        self.driver.execute_script(f"document.body.style.zoom='{zoom_to}%'")
+
+    def delete_footer(self):
+        self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
+        #self.driver.execute_script("document.getElementsById('close-fixedban').remove();")
+
     def action_right_click(self, element):
         action = ActionChains(self.driver)
         action.context_click(element)

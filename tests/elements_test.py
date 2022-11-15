@@ -17,13 +17,6 @@ class TestElements:
             assert current_address == created_cur_addr, "The current address does not match"
             assert permanent_address == created_perm_addr, "The permanent address does not match"
 
-        def test_mo_to(self, driver):
-            text_box_page = TextBoxPage(driver, 'https://demoqa.com/text-box')
-            text_box_page.open()
-            time.sleep(5)
-            text_box_page.move()
-            time.sleep(5)
-
     class TestCheckBox:
         def test_check_box(self, driver):
             check_box_page = CheckBoxPage(driver, 'https://demoqa.com/checkbox')
