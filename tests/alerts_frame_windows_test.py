@@ -1,9 +1,8 @@
-from pages.alerts_frame_windows_page import BrowserWindowsPage, FramesPage
+from pages.alerts_frame_windows_page import BrowserWindowsPage, FramesPage, NestedFramesPage, ModalDialogsPage
 from pages.alerts_frame_windows_page import AlertsPage
 
 
 class TestAlertsFrameWindows:
-
     class TestBrowserWindows:
 
         def test_new_tab(self, driver):
@@ -44,7 +43,7 @@ class TestAlertsFrameWindows:
             alert_page.open()
             text, text_result = alert_page.check_prompt_alert()
             assert text in text_result, 'Alert did not show up'
-            #assert f"You entered {text}" == text_result
+            # assert f"You entered {text}" == text_result
 
     class TestFramesPage:
         def test_frames(self, driver):
@@ -54,3 +53,23 @@ class TestAlertsFrameWindows:
             result_frame2 = frame_page.check_frame('frame2')
             assert result_frame1 == ['This is a sample page', '500px', '350px']
             assert result_frame2 == ['This is a sample page', '100px', '100px']
+
+    class TestNestedFramesPage:
+        def test_nested_frames(self, driver):
+            nested_frame_page = NestedFramesPage(driver, 'https://demoqa.com/nestedframes')
+            nested_frame_page.open()
+            parent_text, child_text = nested_frame_page.check_nested_frame()
+            assert parent_text == 'Parent frame', 'Nested frame does not exist'
+            assert child_text == 'Child Iframe', 'Nested frame does not exist'
+
+    class TestModalDialogsPage:
+        def test_modal_dialogs(self, driver):
+            modal_dialogs_page = ModalDialogsPage(driver, 'https://demoqa.com/modal-dialogs')
+            modal_dialogs_page.open()
+            small, large = modal_dialogs_page.check_modal_dialogs()
+            assert small[0] == 'Small Modal', 'The header is not "Small Modal"'
+            assert large[0] == 'Large Modal', 'The header is not "Large Modal"'
+            assert small[1] < large[1], 'The text from the small dialogue is larger than the text from the large ' \
+                                        'dialogue '
+
+

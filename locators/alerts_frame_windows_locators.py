@@ -15,7 +15,26 @@ class AlertsPageLocators:
     PROMPT_BOX_ALERT_BUTTON = (By.XPATH, "//button[@id='promtButton']")
     PROMPT_RESULT = (By.XPATH, "//span[@id='promptResult']")
 
+
 class FramesPageLocators:
     FIRST_FRAME = (By.XPATH, "//iframe[@id='frame1']")
     SECOND_FRAME = (By.XPATH, "//iframe[@id='frame2']")
     TITLE_FRAME = (By.XPATH, "//h1[@id='sampleHeading']")
+
+
+class NestedFramesPageLocators:
+    PARENT_FRAME = (By.CSS_SELECTOR, "iframe[id='frame1']")
+    PARENT_TEXT = (By.CSS_SELECTOR, 'body')
+    CHILD_FRAME = (By.CSS_SELECTOR, "iframe[srcdoc='<p>Child Iframe</p>']")
+    CHILD_TEXT = (By.CSS_SELECTOR, 'p')
+
+
+class ModalDialogsPageLocators:
+    SMALL_MODAL_BUTTON = (By.XPATH, "//button[@id='showSmallModal']")
+    SMALL_MODAL_CLOSE_BUTTON = (By.XPATH, "//button[@id='closeSmallModal']")
+    BODY_SMALL_MODAL = (By.XPATH, "//div[@class='modal-body']")
+    TITLE_SMALL_MODAL = (By.XPATH, "//div[@id='example-modal-sizes-title-sm']")
+
+    LARGE_MODAL_BUTTON = (By.XPATH, "//button[@id='showLargeModal']")
+    BODY_LARGE_MODAL = (By.XPATH, "//div[@class='modal-body']")
+    TITLE_LARGE_MODAL = (By.XPATH, "//div[@id='example-modal-sizes-title-lg']")
