@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait as wait
 
@@ -31,7 +32,34 @@ class BasePage:
     def go_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
-    def switch_to_window(self, num):
-        self.driver.switch_to.window(self.driver.window_handles[num])
+    def scroll_down(self):
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def scroll_to(self, y):
+        self.driver.execute_script(f"window.scrollTo(0, {y})")
+
+    def zoom(self, zoom_to):
+        self.driver.execute_script(f"document.body.style.zoom='{zoom_to}%'")
+
+    def delete_footer(self):
+        self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
+        #self.driver.execute_script("document.getElementsById('close-fixedban').remove();")
+
+    def action_right_click(self, element):
+        action = ActionChains(self.driver)
+        action.context_click(element)
+        action.perform()
+
+    def action_double_click(self, element):
+        action = ActionChains(self.driver)
+        action.double_click(element)
+        action.perform()
+
+    def move_to_element(self, element):
+        action = ActionChains(self.driver)
+        action.move_to_element(element)
+        action.perform()
+
+
 
 
