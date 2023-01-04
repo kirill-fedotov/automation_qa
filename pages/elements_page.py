@@ -61,13 +61,6 @@ class CheckBoxPage(BasePage):
             else:
                 break
 
-    def get_checked_checkboxes(self):
-        checked_list = self.elements_are_present(self.locators.CHECKED_ITEMS)
-        data = []
-        for box in checked_list:
-            data.append(box.text)
-        return str(data).replace(' ', '').replace('.', '').replace('doc', '').lower()
-
     def get_output_result(self):
         result_list = self.elements_are_present(self.locators.OUTPUT_RESULT)
         data = []
@@ -122,6 +115,7 @@ class WebTablePage(BasePage):
 
     def search_some_person(self, key_word):
         self.element_is_visible(self.locators.SEARCH_INPUT).send_keys(key_word)
+        self.scroll_to(200)
 
     def check_search_person(self):
         delete_button = self.element_is_present(self.locators.DELETE_BUTTON)
