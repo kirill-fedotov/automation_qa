@@ -55,7 +55,6 @@ class TestAlertsFrameWindows:
             alert_page.open()
             text, text_result = alert_page.check_prompt_alert()
             assert text in text_result, 'Alert did not show up'
-            # assert f"You entered {text}" == text_result
 
     @allure.feature('Frames')
     class TestFramesPage:
