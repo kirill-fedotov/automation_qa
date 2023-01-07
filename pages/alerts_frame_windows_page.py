@@ -10,14 +10,22 @@ class BrowserWindowsPage(BasePage):
     locators = BrowserWindowsPageLocators()
 
     def check_opened_new_tab(self):
+        window_before = self.driver.window_handles[0]
+        print(window_before)
         self.element_is_visible(self.locators.NEW_TAB_BUTTON).click()
-        self.switch_to_window(1)
+        window_after = self.driver.window_handles[1]
+        self.driver.switch_to.window(window_after)
+        print(window_after)
         text_title = self.element_is_present(self.locators.TITLE_NEW_PAGE).text
         return text_title
 
     def check_opened_new_window(self):
+        window_before = self.driver.window_handles[0]
+        print(window_before)
         self.element_is_visible(self.locators.NEW_WINDOW_BUTTON).click()
-        self.switch_to_window(1)
+        window_after = self.driver.window_handles[1]
+        self.driver.switch_to.window(window_after)
+        print(window_after)
         text_title = self.element_is_present(self.locators.TITLE_NEW_PAGE).text
         return text_title
 
