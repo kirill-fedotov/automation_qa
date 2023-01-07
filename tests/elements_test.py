@@ -168,3 +168,10 @@ class TestElements:
             dynamic_properties_page.open()
             appear = dynamic_properties_page.check_appear_button()
             assert appear is True, 'button did not appear after 5 seconds'
+
+        @allure.title('Check AppearButton')
+        def test_appear_button2(self, driver):
+            dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
+            dynamic_properties_page.open()
+            appear = dynamic_properties_page.check_appear_button()
+            assert appear is True, 'button did not appear after 5 seconds'
