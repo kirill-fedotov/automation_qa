@@ -6,18 +6,16 @@ faker_en = Faker('En')
 Faker.seed()
 
 
+def generated_color():
+    yield Color("Red", "Blue", "Green", "Yellow", "Purple")
+
+
 def generated_person():
     yield Person(
         full_name=faker_ru.first_name() + " " + faker_ru.last_name() + " " + faker_ru.middle_name(),
         email=faker_ru.email(),
         current_address=faker_ru.address(),
         permanent_address=faker_ru.address(),
-    )
-
-
-def generated_color():
-    yield Color(
-        color_name=["Red", "Blue", "Green", "Yellow", "Purple"]
     )
 
 
@@ -28,4 +26,3 @@ def generated_date():
         year=faker_en.year(),
         time="12:00"
     )
-

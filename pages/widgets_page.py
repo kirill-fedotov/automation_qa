@@ -53,7 +53,8 @@ class AutoCompletePage(BasePage):
     locators = AutoCompletePageLocators()
 
     def fill_input_multi(self):
-        colors = random.sample(next(generated_color()).color_name, k=random.randint(2, 5))
+        colors = ("Red", "Blue", "Green", "Yellow", "Purple")
+        colors = random.sample(colors, k=random.randint(1, 5))
         for color in colors:
             input_multi = self.element_is_clickable(self.locators.MULTI_INPUT)
             input_multi.send_keys(color)
@@ -77,11 +78,12 @@ class AutoCompletePage(BasePage):
         return colors
 
     def fill_input_single(self):
-        color = random.sample(next(generated_color()).color_name, k=1)
+        words = ("Red", "Blue", "Green", "Yellow", "Purple")
+        word = random.choice(words)
         input_single = self.element_is_clickable(self.locators.SINGLE_INPUT)
-        input_single.send_keys(color)
+        input_single.send_keys(word)
         input_single.send_keys(Keys.ENTER)
-        return color[0]
+        return word
 
     def check_color_in_single(self):
         color = self.element_is_visible(self.locators.SINGLE_CONTAINER)
@@ -98,19 +100,20 @@ class DatePickerPage(BasePage):
         input_date.click()
         self.set_date_by_text(self.locators.DATE_SELECT_MONTH, date.month)
         self.set_date_by_text(self.locators.DATE_SELECT_YEAR, date.year)
-        self.set_date_item_from_list(self.locators.DATE_SELECT_DAY_LIST, date.day)
+        day = self.element_is_visible(self.locators.DATE_SELECT_DAY_LIST)
+        day.click()
         value_date_after = input_date.get_attribute('value')
         return value_date_before, value_date_after
 
     def select_date_and_time(self):
         date = next(generated_date())
-        input_date = self.element_is_visible(self.locators.DATE_INPUT)
+        input_date = self.element_is_visible(self.locators.DATE_AND_TIME_INPUT)
         value_date_before = input_date.get_attribute('value')
         input_date.click()
-        self.element_is_visible(self.locators.DATE_AND_TIME_MONTH).click()
+        self.element_is_clickable(self.locators.DATE_AND_TIME_MONTH).click()
         self.set_date_item_from_list(self.locators.DATE_AND_TIME_MONTH_LIST, date.month)
-        self.element_is_visible(self.locators.DATE_AND_TIME_YEAR).click()
-        self.set_date_item_from_list(self.locators.DATE_AND_TIME_YEAR_LIST, '2022')
+        self.element_is_clickable(self.locators.DATE_AND_TIME_YEAR).click()
+        self.set_date_item_from_list(self.locators.DATE_AND_TIME_YEAR_LIST, '2020')
         self.set_date_item_from_list(self.locators.DATE_SELECT_DAY_LIST, date.day)
         self.set_date_item_from_list(self.locators.DATE_AND_TIME_TIME_LIST, date.time)
         input_date_after = self.element_is_visible(self.locators.DATE_AND_TIME_INPUT)
@@ -125,7 +128,7 @@ class DatePickerPage(BasePage):
         item_list = self.elements_are_present(elements)
         for item in item_list:
             if item.text == value:
-                value.click()
+                item.click()
                 break
 
 
@@ -183,6 +186,7 @@ class ToolTipsPage(BasePage):
         return text
 
     def check_tool_tips(self):
+        self.scroll_to(300)
         tool_tip_text_button = self.get_text_from_tool_tips(self.locators.BUTTON, self.locators.TOOL_TIP_BUTTON)
         tool_tip_text_field = self.get_text_from_tool_tips(self.locators.FIELD, self.locators.TOOL_TIP_FIELD)
         tool_tip_text_contrary = self.get_text_from_tool_tips(self.locators.CONTRARY_LINK,

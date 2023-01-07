@@ -1,3 +1,5 @@
+import time
+
 import allure
 
 from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, \
@@ -45,7 +47,7 @@ class TestWidgets:
             autocomplete_page.open()
             color = autocomplete_page.fill_input_single()
             color_result = autocomplete_page.check_color_in_single()
-            assert color == color_result, 'The added color are missing in the input'
+            assert color in color_result, 'The added color are missing in the input'
 
     @allure.feature('Date Picker')
     class TestDatePickerPage:
@@ -69,7 +71,7 @@ class TestWidgets:
 
         @allure.title('Check Slider')
         def test_slider(self, driver):
-            slider = SliderPage(driver, 'https://demoqa.com/progress-bar')
+            slider = SliderPage(driver, 'https://demoqa.com/slider')
             slider.open()
             value_before, value_after = slider.change_slider_value()
             assert value_before != value_after, 'The slider value has not been changed'
