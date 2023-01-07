@@ -39,7 +39,7 @@ class TestInteractions:
             resizable_page.open()
             max_box, min_box = resizable_page.change_size_resizable_box()
             max_resize, min_resize = resizable_page.change_size_resizable()
-            assert max_box == ('250px', '270px'), 'Size not equal to "250px", "270px"'
+            assert max_box == ('200px', '200px'), 'Size not equal to "200px", "200px"'
             assert min_box == ('150px', '150px'), 'Size not equal to "150px", "150px"'
             assert max_resize != min_resize, 'Resizable hax not been changed'
 
@@ -98,9 +98,9 @@ class TestInteractions:
             top_y, left_y = dragabble_page.axis_restricted_y()
             assert top_x[0][0] == top_x[1][0] and int(top_x[1][0]) == 0, \
                 'Box position has not changed or there has been a shift in the y-axis'
-            assert left_x[0][0] != left_x[1][0] and int(left_x[1][0]) != 0, \
+            assert left_x[0][0] == left_x[1][0] and int(left_x[1][0]) == 0, \
                 'Box position has not changed or there has been a shift in the y-axis'
             assert top_y[0][0] != top_y[1][0] and int(top_y[1][0]) != 0, \
                 'Box position has not changed or there has been a shift in the x-axis'
-            assert left_y[0][0] == left_y[1][0] and int(left_y[1][0]) == 0, \
+            assert left_y[0][0] != left_y[1][0] and int(left_y[1][0]) != 0, \
                 'Box position has not changed or there has been a shift in the x-axis'

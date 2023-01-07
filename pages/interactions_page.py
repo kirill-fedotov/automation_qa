@@ -15,6 +15,7 @@ class SortablePage(BasePage):
         return [item.text for item in item_list]
 
     def change_list_order(self):
+        self.scroll_down()
         self.element_is_visible(self.locators.TAB_LIST).click()
         order_before = self.get_sortable_items(self.locators.LIST_ITEM)
         item_list = random.sample(self.elements_are_visible(self.locators.LIST_ITEM), k=2)
@@ -43,6 +44,7 @@ class SelectablePage(BasePage):
         random.sample(item_list, k=1)[0].click()
 
     def select_list_item(self):
+        self.scroll_down()
         self.element_is_visible(self.locators.TAB_LIST).click()
         self.click_selectable_item(self.locators.LIST_ITEM)
         active_element = self.element_is_visible(self.locators.LIST_ITEM_ACTIVE)
@@ -108,6 +110,7 @@ class DroppablePage(BasePage):
         return drop_text_not_accept, drop_text_accept
 
     def drop_prevent_propogation(self):
+        self.scroll_down()
         self.element_is_visible(self.locators.PREVENT_TAB).click()
         drag_div = self.element_is_visible(self.locators.DRAG_ME_PREVENT)
         not_greedy_inner_box = self.element_is_visible(self.locators.NOT_GREEDY_INNER_BOX)
@@ -165,6 +168,7 @@ class DragabblePage(BasePage):
         return re.findall(r'\d[0-9]|\d', positions.split(';')[1])
 
     def axis_restricted_x(self):
+        self.scroll_down()
         self.element_is_visible(self.locators.AXIS_TAB).click()
         only_x = self.element_is_visible(self.locators.ONLY_X)
         position_x = self.get_before_and_after_position(only_x)
