@@ -22,6 +22,7 @@ class BrowserWindowsPage(BasePage):
     def check_opened_new_window(self):
         window_before = self.driver.window_handles[0]
         print(window_before)
+        time.sleep(2)
         self.element_is_visible(self.locators.NEW_WINDOW_BUTTON).click()
         window_after = self.driver.window_handles[1]
         self.driver.switch_to.window(window_after)
